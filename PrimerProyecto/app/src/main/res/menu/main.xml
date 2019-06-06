@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/opcionView"
+        android:title="Vistas">
+        <menu>
+            <item
+                android:id="@+id/opcionDialogo"
+                android:title="Dialogo">
+
+            </item>
+            <item
+                android:id="@+id/opcionFragmentos"
+                android:title="Fragmentos">
+
+            </item>
+            <item
+                android:id="@+id/opcionParametros"
+                android:title="Parámetros">
+
+            </item>
+            <item
+                android:id="@+id/opcionEventos"
+                android:title="Eventos">
+
+            </item>
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/opcionSensores"
+        android:title="Sensores">
+        <menu>
+            <item
+                android:id="@+id/opcionProximida"
+                android:title="Proximida">
+
+            </item>
+            <item
+                android:id="@+id/opcionLuz"
+                android:title="Luz">
+
+            </item>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/opcionArchivos"
+        android:title="Archivos">
+        <menu>
+            <item
+                android:id="@+id/opcionMI"
+                android:title="Interna">
+                <menu>
+                    <item
+                        android:id="@+id/opcionEscribirMI"
+                        android:title="EscribirMI">
+                    </item>
+                    <item
+                        android:id="@+id/opcionLeerMI"
+                        android:title="LeerMI">
+                    </item>
+                </menu>
+
+            </item>
+            <item
+                android:id="@+id/opcionSD"
+                android:title="SD">
+
+            </item>
+            <item
+                android:id="@+id/opcionRaw"
+                android:title="Raw">
+
+            </item>
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/opcionSql"
+        android:title="Sql">
+        <menu>
+            <item
+                android:id="@+id/opcionHelper"
+                android:title="Helpers">
+
+            </item>
+            <item
+                android:id="@+id/opcionOrm"
+                android:title="ORM">
+
+            </item>
+        </menu>
+
+    </item>
+
+</menu>

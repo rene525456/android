@@ -12,9 +12,10 @@ import com.example.primerproyecto.modelo.Producto;
 
 import java.util.List;
 
-public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> {
+public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> implements View.OnClickListener{
 
     List<Producto> lista;
+    private View.OnClickListener listener;
 
     public ProductoAdapter(List<Producto> lista) {
         this.lista = lista;
@@ -24,6 +25,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_item_producto,null);
+        view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
@@ -49,4 +51,16 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
             nombre = itemView.findViewById(R.id.lblNombreCard);
         }
     }
+
+    public void setOnCLickListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null) {
+            listener.onClick(v);
+        }
+    }
+
 }

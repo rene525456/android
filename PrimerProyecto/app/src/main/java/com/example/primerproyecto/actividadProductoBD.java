@@ -21,7 +21,9 @@ public class actividadProductoBD extends AppCompatActivity implements View.OnCli
     RecyclerView recyclerViewProducto;
 
     HelperProducto helperProducto;
+
     ProductoAdapter adapter;
+    private List<Producto> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +52,45 @@ public class actividadProductoBD extends AppCompatActivity implements View.OnCli
 
         // crear un objeto de tipo helper
         helperProducto = new HelperProducto(actividadProductoBD.this);
+        list = new ArrayList<Producto>();
+        list = helperProducto.getAllProductos();
 
-        adapter = new ProductoAdapter(helperProducto.getAllProductos());
+        adapter = new ProductoAdapter(list);
 
         recyclerViewProducto = findViewById(R.id.recyclerProducto);
         recyclerViewProducto.setLayoutManager(new LinearLayoutManager(this));
+        // generamos el evento
+        adapter.setOnCLickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Producto producto = list.get(recyclerViewProducto.getChildAdapterPosition(v));
+               viewDialog(producto)
+           }
+       }
+
         recyclerViewProducto.setAdapter(adapter);
-
-
     }
 
-
+    private void viewDialog(final Producto p) {
+        final CharSequence[] opt = {"Editar", "Eliminar", "Caneclar"};
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Eliga una opcion");
+        builder.setItems(opt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                if (opt[i].equals("Editar")) {
+                    //editProduccto(p);
+                } else {
+                    if (opt[i].equals("Eliminar")) {
+                        deleteProducto(p.getCodigo());
+                    } else {
+                        dialog.dismiss();
+                    }
+                }
+            }
+        });
+        builder.show();
+    }
 
     @Override
     public void onClick(View v) {

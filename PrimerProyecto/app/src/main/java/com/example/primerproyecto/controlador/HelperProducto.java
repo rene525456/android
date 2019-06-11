@@ -13,7 +13,7 @@ import java.util.List;
 
 public class HelperProducto extends SQLiteOpenHelper {
     public HelperProducto(Context context) {
-        super(context, "bd", null, 1);
+        super(context, "bda", null, 1);
     }
 
     @Override
@@ -64,7 +64,6 @@ public class HelperProducto extends SQLiteOpenHelper {
         return consulta;
     }
 
-
     public String leerPorCodigo(String codigo){
         String consulta = null;
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM producto where codigo = '" + codigo + "'",null);
@@ -88,13 +87,31 @@ public class HelperProducto extends SQLiteOpenHelper {
         if (cursor.moveToFirst()){
             do{
                 Producto producto = new Producto();
-                producto.setCodigo(cursor.getString(cursor.getColumnIndex("nombre")));
+                producto.setCodigo(cursor.getString(cursor.getColumnIndex("codigo")));
                 producto.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
                 producto.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
                 producto.setExistencia(cursor.getInt(cursor.getColumnIndex("existencia")));
                 producto.setPrecio(cursor.getDouble(cursor.getColumnIndex("precio_unitario")));
                 lista.add(producto);
 
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return lista;
+    }
+
+    public List<Producto> getByCode(String codigo){
+        List <Producto> lista = new ArrayList<Producto>();
+        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM producto where codigo = '" + codigo + "'",null);
+        if (cursor.moveToFirst()){
+            do{
+                Producto producto = new Producto();
+                producto.setCodigo(cursor.getString(cursor.getColumnIndex("codigo")));
+                producto.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+                producto.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
+                producto.setExistencia(cursor.getInt(cursor.getColumnIndex("existencia")));
+                producto.setPrecio(cursor.getDouble(cursor.getColumnIndex("precio_unitario")));
+                lista.add(producto);
             }while (cursor.moveToNext());
         }
         cursor.close();

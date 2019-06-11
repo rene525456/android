@@ -23,8 +23,9 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_item_producto,null);
+    public ProductoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_item_producto,
+                null);
         view.setOnClickListener(this);
         return new ViewHolder(view);
     }
@@ -40,6 +41,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     public int getItemCount() {
         return lista.size();
     }
+
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView nombre ;
@@ -62,5 +65,4 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
             listener.onClick(v);
         }
     }
-
 }

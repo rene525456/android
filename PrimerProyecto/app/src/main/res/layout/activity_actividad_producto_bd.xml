@@ -67,6 +67,13 @@
             android:text="++" />
 
         <Button
+            android:id="@+id/btnEliminarCodigoBD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-C" />
+
+        <Button
             android:id="@+id/btnEliminarBD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,15 +92,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="BT" />
+            android:text="BC" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/lblDatosBD"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerProducto"

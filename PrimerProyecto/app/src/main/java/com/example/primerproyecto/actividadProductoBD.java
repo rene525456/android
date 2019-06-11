@@ -22,65 +22,58 @@ import java.util.List;
 public class actividadProductoBD extends AppCompatActivity implements View.OnClickListener {
 
     EditText cajaNombre, cajaDescripcion, cajaCodigo, cajaExistencia, cajaPrecio;
-    Button botonGuardar, botonModificar, botonEliminar, botonBuscarTodos, botonBuscarCodigo;
-    TextView datos;
+    Button botonGuardar, botonModificar, botonEliminar, botonEliminarCodigo, botonBuscarTodos, botonBuscarCodigo;
     RecyclerView recyclerViewProducto;
     HelperProducto helperProducto;
     ProductoAdapter adapter;
-    private List<Producto> list;
+    private List<Producto> listaProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_producto_bd);
-        cajaNombre = findViewById(R.id.txtNombreBD);
-        cajaDescripcion = findViewById(R.id.txtDescripcionBD);
-        cajaCodigo = findViewById(R.id.txtCodigoBD);
-        cajaExistencia = findViewById(R.id.txtExistenciaBD);
-        cajaPrecio = findViewById(R.id.txtPrecioBD);
-
-        datos = findViewById(R.id.lblDatosBD);
-
-        botonGuardar = findViewById(R.id.btnGuardarBD);
-        botonModificar  = findViewById(R.id.btnModificarBD);
-        botonEliminar = findViewById(R.id.btnEliminarBD);
-        botonBuscarTodos = findViewById(R.id.btnBuscarTodosBD);
-        botonBuscarCodigo = findViewById(R.id.btnBuscarCodigoBD);
-
-        botonGuardar.setOnClickListener(this);
-        botonModificar.setOnClickListener(this);
-        botonEliminar.setOnClickListener(this);
-        botonBuscarTodos.setOnClickListener(this);
-        botonBuscarCodigo.setOnClickListener(this);
-
-        // crear un objeto de tipo helper
+        tomarControl();
         helperProducto = new HelperProducto(actividadProductoBD.this);
+        listaProducto = new ArrayList<Producto>();
+        listaProducto = helperProducto.getAllProductos();
+    }
 
-        list = new ArrayList<Producto>();
-        list = helperProducto.getAllProductos();
-        adapter = new ProductoAdapter(list);
-
-        recyclerViewProducto = findViewById(R.id.recyclerProducto);
+    public void cargarLista(List<Producto> lista){
+        listaProducto = new ArrayList<Producto>();
+        listaProducto = lista;
         recyclerViewProducto.setLayoutManager(new LinearLayoutManager(this));
-
+        adapter = new ProductoAdapter(listaProducto);
         adapter.setOnCLickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Producto producto = list.get(recyclerViewProducto.getChildAdapterPosition(v));
-                viewDialog(producto);
+                Producto producto = listaProducto.get(recyclerViewProducto.getChildAdapterPosition(v));
+                cajaCodigo.setText(producto.getCodigo());
+                cajaNombre.setText(producto.getNombre());
+                cajaDescripcion.setText(producto.getDescripcion());
             }
         });
         recyclerViewProducto.setAdapter(adapter);
     }
 
-    public void cargarLista(List<Producto> listaProducto){
-        list = new ArrayList<Producto>();
-        list = listaProducto;
-        adapter = new ProductoAdapter(list);
+    private void tomarControl(){
+        cajaNombre = findViewById(R.id.txtNombreBD);
+        cajaDescripcion = findViewById(R.id.txtDescripcionBD);
+        cajaCodigo = findViewById(R.id.txtCodigoBD);
+        cajaExistencia = findViewById(R.id.txtExistenciaBD);
+        cajaPrecio = findViewById(R.id.txtPrecioBD);
+        botonGuardar = findViewById(R.id.btnGuardarBD);
+        botonModificar  = findViewById(R.id.btnModificarBD);
+        botonEliminar = findViewById(R.id.btnEliminarBD);
+        botonEliminarCodigo = findViewById(R.id.btnEliminarCodigoBD);
+        botonBuscarTodos = findViewById(R.id.btnBuscarTodosBD);
+        botonBuscarCodigo = findViewById(R.id.btnBuscarCodigoBD);
+        botonGuardar.setOnClickListener(this);
+        botonModificar.setOnClickListener(this);
+        botonEliminar.setOnClickListener(this);
+        botonEliminarCodigo.setOnClickListener(this);
+        botonBuscarTodos.setOnClickListener(this);
+        botonBuscarCodigo.setOnClickListener(this);
         recyclerViewProducto = findViewById(R.id.recyclerProducto);
-        recyclerViewProducto.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewProducto.setAdapter(adapter);
-
     }
 
     private void viewDialog(final Producto p) {
@@ -94,7 +87,7 @@ public class actividadProductoBD extends AppCompatActivity implements View.OnCli
                     //editProduccto(p);
                 } else {
                     if (opt[i].equals("Eliminar")) {
-                        deleteProducto(p.getCodigo());
+                        //deleteProducto(p.getCodigo());
                     } else {
                         dialog.dismiss();
                     }
@@ -102,39 +95,45 @@ public class actividadProductoBD extends AppCompatActivity implements View.OnCli
             }
         });
         builder.show();
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnGuardarBD:
-                Producto producto = new Producto();
-                producto.setNombre(cajaNombre.getText().toString());
-                producto.setDescripcion(cajaDescripcion.getText().toString());
-                producto.setCodigo(cajaCodigo.getText().toString());
-                producto.setExistencia(Integer.parseInt(cajaExistencia.getText().toString()));
-                producto.setPrecio(Double.parseDouble(cajaPrecio.getText().toString()));
-                helperProducto.insertar(producto);
-                recreate();
-                //cargarLista();
+                Producto p1 = new Producto();
+                p1.setNombre(cajaNombre.getText().toString());
+                p1.setDescripcion(cajaDescripcion.getText().toString());
+                p1.setCodigo(cajaCodigo.getText().toString());
+                p1.setExistencia(Integer.parseInt(cajaExistencia.getText().toString()));
+                p1.setPrecio(Double.parseDouble(cajaPrecio.getText().toString()));
+                helperProducto.insertar(p1);
+                cargarLista(helperProducto.getAllProductos());
+                break;
+            case R.id.btnModificarBD:
+                Producto p2 = new Producto();
+                p2.setNombre(cajaNombre.getText().toString());
+                p2.setDescripcion(cajaDescripcion.getText().toString());
+                p2.setCodigo(cajaCodigo.getText().toString());
+                p2.setExistencia(Integer.parseInt(cajaExistencia.getText().toString()));
+                p2.setPrecio(Double.parseDouble(cajaPrecio.getText().toString()));
+                helperProducto.modificar(p2);
+                cargarLista(helperProducto.getAllProductos());
+                break;
+            case R.id.btnEliminarCodigoBD:
+                helperProducto.eliminarPorCodigo(cajaCodigo.getText().toString());
+                cargarLista(helperProducto.getAllProductos());
+                break;
+            case R.id.btnEliminarBD:
+                helperProducto.eliminarTodos();
+                cargarLista(helperProducto.getAllProductos());
                 break;
             case R.id.btnBuscarTodosBD:
-                //datos.setTcajaCodigo.getText().toString())ext(helperProducto.leerTodos());
                 cargarLista(helperProducto.getAllProductos());
                 break;
             case R.id.btnBuscarCodigoBD:
                 cargarLista(helperProducto.getByCode(cajaCodigo.getText().toString()));
-                //datos.setText(helperProducto.leerPorCodigo(cajaCodigo.getText().toString()));
-                //cargarLista();
                 break;
         }
-    }
-
-    private void deleteProducto(String codigo) {
-        //Producto p = new Select().from(Producto.class).where("codigo=?",codigo).executeSingle();
-        //Toast.makeText(this, "Producto eliminado", Toast.LENGTH_SHORT).show();
-        //p.delete();
-        //recreate();
     }
 }

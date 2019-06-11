@@ -46,6 +46,14 @@ public class HelperProducto extends SQLiteOpenHelper {
         this.getWritableDatabase().update("producto",values,"codigo='" + producto.getCodigo() +"'",null);
     }
 
+    public void eliminarPorCodigo(String codigo){
+        this.getWritableDatabase().delete("producto","codigo='" + codigo + "'",null);
+    }
+
+    public void eliminarTodos(){
+        this.getWritableDatabase().delete("producto",null,null);
+    }
+
     public String leerTodos(){
         String consulta = "";
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM producto",null);
@@ -118,9 +126,3 @@ public class HelperProducto extends SQLiteOpenHelper {
         return lista;
     }
 }
-
-
-
-
-
-

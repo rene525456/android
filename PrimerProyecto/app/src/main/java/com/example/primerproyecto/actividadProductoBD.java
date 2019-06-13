@@ -22,7 +22,8 @@ import java.util.List;
 public class actividadProductoBD extends AppCompatActivity implements View.OnClickListener {
 
     EditText cajaNombre, cajaDescripcion, cajaCodigo, cajaExistencia, cajaPrecio;
-    Button botonGuardar, botonModificar, botonEliminar, botonEliminarCodigo, botonBuscarTodos, botonBuscarCodigo;
+    Button botonGuardar, botonModificar, botonEliminar, botonEliminarCodigo, botonBuscarTodos,
+            botonBuscarCodigo;
     RecyclerView recyclerViewProducto;
     HelperProducto helperProducto;
     ProductoAdapter adapter;
@@ -34,8 +35,6 @@ public class actividadProductoBD extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_actividad_producto_bd);
         tomarControl();
         helperProducto = new HelperProducto(actividadProductoBD.this);
-        listaProducto = new ArrayList<Producto>();
-        listaProducto = helperProducto.getAllProductos();
     }
 
     public void cargarLista(List<Producto> lista){

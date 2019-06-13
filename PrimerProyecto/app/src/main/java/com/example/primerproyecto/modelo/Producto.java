@@ -1,11 +1,47 @@
 package com.example.primerproyecto.modelo;
 
-public class Producto {
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
+import java.util.List;
+
+@Table(name="producto")
+public class Producto extends Model {
+    @Column(name = "codigo", unique = true)
     private String codigo;
+    @Column(name = "nombre", notNull = true)
     private String nombre;
+    @Column(name = "descripcion")
     private String descripcion;
+    @Column(name = "existencia", notNull = true)
     private int existencia;
+    @Column(name = "precio_unitario", notNull = true)
     private double precio;
+
+    public Producto() {
+        super();
+    }
+
+    public Producto(String codigo, String nombre, String descripcion, int existencia, double precio) {
+        super();
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.existencia = existencia;
+        this.precio = precio;
+    }
+
+    public static List<Producto> getAll(){
+        return new Select().from(Producto.class).execute();
+    }
+
+    public static Producto getProducto(String cod){
+        return new Select().from(Producto.class).where("codigo=?",cod).executeSingle();
+    }
+
+
 
     public String getCodigo() {
         return codigo;

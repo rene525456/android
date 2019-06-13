@@ -12,7 +12,8 @@ import com.example.primerproyecto.modelo.Producto;
 
 import java.util.List;
 
-public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> implements View.OnClickListener{
+public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolderProducto>
+        implements View.OnClickListener{
 
     List<Producto> lista;
     private View.OnClickListener listener;
@@ -23,15 +24,15 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
     @NonNull
     @Override
-    public ProductoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ProductoAdapter.ViewHolderProducto onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_item_producto,
                 null);
         view.setOnClickListener(this);
-        return new ViewHolder(view);
+        return new ViewHolderProducto(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int posicion) {
+    public void onBindViewHolder(@NonNull ProductoAdapter.ViewHolderProducto viewHolder, int posicion) {
         // se fija los datos en cada fila a través del holder view
         viewHolder.nombre.setText(lista.get(posicion).getNombre());
         viewHolder.codigo.setText(lista.get(posicion).getCodigo());
@@ -44,11 +45,11 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolderProducto extends RecyclerView.ViewHolder{
         TextView nombre ;
         TextView codigo;
 
-        public ViewHolder(View itemView) {
+        public ViewHolderProducto(View itemView) {
             super(itemView);
             codigo = itemView.findViewById(R.id.lblCodigoCard);
             nombre = itemView.findViewById(R.id.lblNombreCard);

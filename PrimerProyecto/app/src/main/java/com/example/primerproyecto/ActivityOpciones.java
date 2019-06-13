@@ -89,29 +89,12 @@ public class ActivityOpciones extends AppCompatActivity implements View.OnClickL
                 intent = new Intent(ActivityOpciones.this,actividadProductoBD.class);
                 startActivity(intent);
                 break;
+            case R.id.opcionOrm:
+                intent = new Intent(ActivityOpciones.this,ActividadProductoORM.class);
+                startActivity(intent);
+                break;
         }
 
         return true;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,13 +6,33 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".config.AplicacionORM"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actividadProductoBD"></activity>
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="movil22"/>
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.example.primerproyecto.modelo.Producto"/>
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="2"/>
+
+        <provider
+            android:name="com.activeandroid.content.ContentProvider"
+            android:authorities="com.example.primerproyecto"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity android:name=".ActividadAddProductoORM"></activity>
+        <activity android:name=".ActividadProductoORM" />
+        <activity android:name=".actividadProductoBD" />
         <activity android:name=".ActividadArchivoSD" />
         <activity android:name=".ActividadArchivoRaw" />
         <activity android:name=".ActividadLeerMI" />
@@ -28,5 +48,7 @@
         <activity android:name=".ActividadRecibirParametros" />
         <activity android:name=".MainActivity" />
     </application>
+
+
 
 </manifest>

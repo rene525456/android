@@ -18,8 +18,13 @@ public class HelperProducto extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE producto(id INTEGER PRIMARY KEY AUTOINCREMENT, codigo TEXT UNIQUE, nombre TEXT, " +
-                "descripcion TEXT, precio_unitario DOUBLE, existencia INTEGER);");
+        db.execSQL("CREATE TABLE producto(" +
+                                        "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        "codigo TEXT UNIQUE, " +
+                                        "nombre TEXT, " +
+                                        "descripcion TEXT, " +
+                                        "precio_unitario DOUBLE, " +
+                                        "existencia INTEGER);");
     }
 
     @Override
@@ -43,20 +48,24 @@ public class HelperProducto extends SQLiteOpenHelper {
         values.put("descripcion", producto.getDescripcion());
         values.put("precio_unitario", producto.getPrecio());
         values.put("existencia", producto.getExistencia());
-        this.getWritableDatabase().update("producto",values,"codigo='" + producto.getCodigo() +"'",null);
+        this.getWritableDatabase()
+                .update("producto",values,"codigo='" + producto.getCodigo(),null);
     }
 
     public void eliminarPorCodigo(String codigo){
-        this.getWritableDatabase().delete("producto","codigo='" + codigo + "'",null);
+        this.getWritableDatabase()
+                .delete("producto","codigo='" + codigo + "'",null);
     }
 
     public void eliminarTodos(){
+
         this.getWritableDatabase().delete("producto",null,null);
     }
 
     public String leerTodos(){
         String consulta = "";
-        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM producto",null);
+        Cursor cursor = this.getReadableDatabase()
+                .rawQuery("SELECT * FROM producto",null);
         if (cursor.moveToFirst()){
             do{
                 String cod = cursor.getString(cursor.getColumnIndex("codigo"));
@@ -64,7 +73,6 @@ public class HelperProducto extends SQLiteOpenHelper {
                 String descripcion = cursor.getString(cursor.getColumnIndex("descripcion"));
                 int existencia = cursor.getInt(cursor.getColumnIndex("existencia"));
                 double precio  = cursor.getDouble(cursor.getColumnIndex("precio_unitario"));
-                //consulta += cod + " " + nombre + " " + descripcion + " " + existencia + " " + precio + "\n";
                 consulta += cod + " " + nombre + " " + descripcion + " " + existencia + " " + precio +"\n";
             }while (cursor.moveToNext());
         }
@@ -74,7 +82,8 @@ public class HelperProducto extends SQLiteOpenHelper {
 
     public String leerPorCodigo(String codigo){
         String consulta = null;
-        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM producto where codigo = '" + codigo + "'",null);
+        Cursor cursor = this.getReadableDatabase()
+                .rawQuery("SELECT * FROM producto where codigo = '" + codigo + "'",null);
         if (cursor.moveToFirst()){
             do{
                 String cod = cursor.getString(cursor.getColumnIndex("codigo"));
@@ -91,7 +100,8 @@ public class HelperProducto extends SQLiteOpenHelper {
 
     public List<Producto> getAllProductos(){
         List <Producto> lista = new ArrayList<Producto>();
-        Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM producto",null);
+        Cursor cursor = this.getReadableDatabase()
+                .rawQuery("SELECT * FROM producto",null);
         if (cursor.moveToFirst()){
             do{
                 Producto producto = new Producto();

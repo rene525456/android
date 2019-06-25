@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".config.AplicacionORM"
@@ -12,17 +13,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
         <meta-data
             android:name="AA_DB_NAME"
-            android:value="movil22"/>
+            android:value="movil22" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.example.primerproyecto.modelo.Producto"/>
+            android:value="com.example.primerproyecto.modelo.Producto" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="2"/>
+            android:value="2" />
 
         <provider
             android:name="com.activeandroid.content.ContentProvider"
@@ -30,7 +32,18 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".ActividadAddProductoORM"></activity>
+        <activity android:name=".ActividadHiloSw"/>
+        <activity android:name=".ActivitySWHAlumno">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActividadNavegacion"
+            android:label="@string/title_activity_actividad_navegacion"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActividadAddProductoORM" />
         <activity android:name=".ActividadProductoORM" />
         <activity android:name=".actividadProductoBD" />
         <activity android:name=".ActividadArchivoSD" />
@@ -38,17 +51,9 @@
         <activity android:name=".ActividadLeerMI" />
         <activity android:name=".ActividadEscribirMI" />
         <activity android:name=".ActividadFragmentos" />
-        <activity android:name=".ActivityOpciones">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ActivityOpciones" />
         <activity android:name=".ActividadRecibirParametros" />
         <activity android:name=".MainActivity" />
     </application>
-
-
 
 </manifest>

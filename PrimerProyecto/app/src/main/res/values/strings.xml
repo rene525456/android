@@ -10,7 +10,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="nombre_autor">René Guamán Quinche</string>
+    <string name="correo_autor">rene525456@gmail.com</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -19,4 +20,11 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_actividad_navegacion">ActividadNavegacion</string>
+    <string name="title_activity_navegation_principal">ActivityNavegationPrincipal</string>
+    <string name="title_activity_main11">MainActivity11</string>
+
+    <string name="key_map">kldsfsdklfsflk</string>
+    <string name="title_activity_actividad_mapas">Map</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_mapa_pruebas">Map</string>
 </resources>

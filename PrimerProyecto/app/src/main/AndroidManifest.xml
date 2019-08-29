@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.primerproyecto">
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
     <application
-        android:name=".config.AplicacionORM"
+        android:name=".modelo.config.AplicacionORM"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +16,54 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ActividadLogin">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".vista.activities.ActividadSesorProximidad" />
+        <activity android:name=".vista.activities.ActividadSensorAcelerometro" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <activity
+            android:name=".MapaPruebas"
+            android:label="@string/title_activity_mapa_pruebas">
+
+        </activity>
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".vista.activities.ActividadMapas"
+            android:label="Mapas" />
+        <activity android:name=".vista.activities.ActividadHiloSw" />
+
+        <activity android:name=".vista.activities.ActivitySWHAlumno" />
+        <activity android:name=".vista.activities.ActividadAddProductoORM" />
+        <activity android:name=".vista.activities.ActividadProductoORM" />
+
+        <activity android:name=".vista.activities.actividadProductoBD" />
+
+        <activity android:name=".vista.activities.ActividadArchivoSD" />
+        <activity android:name=".vista.activities.ActividadArchivoRaw" />
+        <activity android:name=".vista.activities.ActividadLeerMI" />
+        <activity android:name=".vista.activities.ActividadEscribirMI" />
+        <activity android:name=".vista.activities.ActividadFragmentos" />
+        <activity android:name=".vista.activities.ActivityOpciones" />
+        <activity android:name=".vista.activities.ActividadRecibirParametros" />
+        <activity android:name=".vista.activities.ActividadSWVollyAlumno" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <meta-data
             android:name="AA_DB_NAME"
             android:value="movil22" />
@@ -25,35 +73,16 @@
         <meta-data
             android:name="AA_DB_VERSION"
             android:value="2" />
-
         <provider
             android:name="com.activeandroid.content.ContentProvider"
             android:authorities="com.example.primerproyecto"
             android:enabled="true"
             android:exported="false" />
-
-        <activity android:name=".ActividadHiloSw"/>
-        <activity android:name=".ActivitySWHAlumno">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ActividadNavegacion"
-            android:label="@string/title_activity_actividad_navegacion"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ActividadAddProductoORM" />
-        <activity android:name=".ActividadProductoORM" />
-        <activity android:name=".actividadProductoBD" />
-        <activity android:name=".ActividadArchivoSD" />
-        <activity android:name=".ActividadArchivoRaw" />
-        <activity android:name=".ActividadLeerMI" />
-        <activity android:name=".ActividadEscribirMI" />
-        <activity android:name=".ActividadFragmentos" />
-        <activity android:name=".ActivityOpciones" />
-        <activity android:name=".ActividadRecibirParametros" />
-        <activity android:name=".MainActivity" />
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ActividadLeerMI">
+    tools:context=".vista.activities.ActividadLeerMI">
 
     <Button
         android:id="@+id/btnLeerMI"

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        tools:layout="@layout/content_main" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:padding="@dimen/nav_header_vertical_spacing">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                app:backgroundTint="#f6fcdc0b"
+                app:fabSize="normal"
+                app:rippleColor="@color/common_google_signin_btn_text_light_pressed"
+                app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+            <TextView
+                android:id="@+id/txtFab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="Corredores"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:typeface="normal" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="#fc1ffc0b"
+                app:fabSize="mini"
+                app:rippleColor="@color/common_google_signin_btn_text_light_pressed"
+                app:srcCompat="@drawable/mapbox_marker_icon_default">
+
+            </android.support.design.widget.FloatingActionButton>
+
+            <TextView
+                android:id="@+id/txtFab1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:clickable="false"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="Taquil"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:typeface="normal" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/nav_header_vertical_spacing">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="#f002be9f"
+                app:fabSize="mini"
+                app:rippleColor="@color/common_google_signin_btn_text_light_pressed"
+                app:srcCompat="@drawable/mapbox_marker_icon_default" />
+
+            <TextView
+                android:id="@+id/txtFab2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="Chantaco"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:typeface="normal" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/nav_header_vertical_spacing">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="#f6ff4608"
+                app:fabSize="mini"
+                app:rippleColor="@color/common_google_signin_btn_text_light_pressed"
+                app:srcCompat="@drawable/mapbox_marker_icon_default" />
+
+            <TextView
+                android:id="@+id/txtFab3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="Chuquiribamba"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:typeface="normal" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/nav_header_vertical_spacing">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="#f9ba0970"
+                app:fabSize="mini"
+                app:rippleColor="@color/common_google_signin_btn_text_light_pressed"
+                app:srcCompat="@drawable/mapbox_marker_icon_default" />
+
+            <TextView
+                android:id="@+id/txtFab4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="Gualel"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:typeface="normal" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/nav_header_vertical_spacing">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="#f75f26b4"
+                app:fabSize="mini"
+                app:rippleColor="@color/common_google_signin_btn_text_light_pressed"
+                app:srcCompat="@drawable/mapbox_marker_icon_default" />
+
+            <TextView
+                android:id="@+id/txtFab5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="El Cisne"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:typeface="normal" />
+        </TableRow>
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="Aplicación web">
+        <menu>
+            <item
+                android:id="@+id/nav_seleccionar"
+                android:icon="@android:drawable/ic_menu_edit"
+                android:title="Seleccionar Lugar" />
+
+        </menu>
+    </item>
+    <item android:title="Corredor Turistico">
+        <menu>
+            <item
+                android:id="@+id/nav_taquil"
+                android:icon="@android:drawable/ic_dialog_map"
+                android:title="Taquil" />
+            <item
+                android:id="@+id/nav_chantaco"
+                android:icon="@android:drawable/ic_dialog_map"
+                android:title="Chantaco" />
+            <item
+                android:id="@+id/nav_chuquiribamba"
+                android:icon="@android:drawable/ic_dialog_map"
+                android:title="Chuquiribamba" />
+            <item
+                android:id="@+id/nav_gualel"
+                android:icon="@android:drawable/ic_dialog_map"
+                android:title="Gualel" />
+            <item
+                android:id="@+id/nav_cisne"
+                android:icon="@android:drawable/ic_dialog_map"
+                android:title="El cisne" />
+        </menu>
+    </item>
+    <item android:title="Buscar un lugar para visitar">
+        <menu>
+            <item
+                android:id="@+id/nav_mapa"
+                android:icon="@android:drawable/ic_menu_mapmode"
+                android:title="Seleccionar desde mapa" />
+
+            <item
+                android:id="@+id/nav_coordenadas"
+                android:icon="@android:drawable/ic_menu_compass"
+                android:title="Ingresar coordenadas" />
+            <item
+                android:id="@+id/nav_codigo"
+                android:icon="@android:drawable/ic_menu_edit"
+                android:title="Ingresar codigo" />
+            <item
+                android:id="@+id/nav_mapaRutas"
+                android:icon="@android:drawable/ic_menu_mapmode"
+                android:title="Rutas" />
+        </menu>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="redes socuales" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Envíanos un mensaje" />
+        </menu>
+    </item>
+
+</menu>
